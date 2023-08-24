@@ -1,0 +1,8 @@
+# Database volume
+data
+
+# OS generated files
+.DS_Store
+
+# Ignore Bedrock generated files
+website/bedrock

@@ -1,0 +1,34 @@
+version: "3"
+services:
+  nginx:
+    build: ./nginx
+    volumes:
+      - ./website/bedrock:/var/www/html
+    ports:
+      - "8080:80"
+    depends_on:
+      - php
+      - mariadb
+  php:
+    build: ./website
+    env_file: ./website/env/.env.dev
+    volumes:
+      - ./website/bedrock:/var/www/html
+  mariadb:
+    image: mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: mariadb
+      MARIADB_DATABASE: marketingkomm
+      MARIADB_USER: mariadb
+    volumes:
+      - ./data:/var/lib/mysql
+    ports:
+      - 3306:3306
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8000:8080
+    depends_on:
+      - mariadb
