@@ -19,7 +19,7 @@ services:
     restart: always
     environment:
       MARIADB_ROOT_PASSWORD: mariadb
-      MARIADB_DATABASE: marketingkomm
+      MARIADB_DATABASE: mariadb
       MARIADB_USER: mariadb
     volumes:
       - ./data:/var/lib/mysql
