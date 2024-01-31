@@ -16,7 +16,7 @@ services:
       - ./website/bedrock:/var/www/html
   mariadb:
     image: mariadb
-    restart: always
+    restart: on-failure
     environment:
       MARIADB_ROOT_PASSWORD: mariadb
       MARIADB_DATABASE: mariadb
@@ -27,7 +27,7 @@ services:
       - 3306:3306
   adminer:
     image: adminer
-    restart: always
+    restart: on-failure
     ports:
       - 8000:8080
     depends_on:
